@@ -1,0 +1,54 @@
+{
+  "name": "PackageRefundRequest",
+  "plural": "PackageRefundRequests",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "mixins": {
+    "TimeStamp": {
+      "createdAt": "createdOn",
+      "updatedAt": "updatedOn",
+      "silenceWarnings": false
+    }
+  },
+  "properties": {
+    "accountId": {
+      "type": "string",
+      "index": true
+    },
+    "packageId": {
+      "type": "string",
+      "index": true
+    },
+    "purchaseId": {
+      "type": "string",
+      "required": true,
+      "index": true
+    },
+    "reason": {
+      "type": "string",
+      "required": true
+    },
+    "status": {
+      "type": "string",
+      "required": true,
+      "default": "pending",
+      "index": true
+    }
+  },
+  "validations": [],
+  "relations": {
+    "package": {
+      "type": "belongsTo",
+      "model": "Package",
+      "foreignKey": "",
+      "allowedMethods": [
+        "get"
+      ]
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

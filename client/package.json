@@ -1,0 +1,26 @@
+{
+  "name": "custom-server-express",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "node server.js",
+    "build": "next build",
+    "start": "NODE_ENV=production node server.js"
+  },
+  "dependencies": {
+    "axios": "^0.17.1",
+    "compression": "^1.7.1",
+    "data-prefetch-link": "^1.1.2",
+    "deb-version-compare": "^1.2.1",
+    "express": "^4.14.0",
+    "fetch": "^1.1.0",
+    "moment": "^2.20.1",
+    "next": "^4.2.1",
+    "quill-delta-to-html": "^0.5.5",
+    "react": "^16.2.0",
+    "react-currency-formatter": "^1.1.0",
+    "react-dom": "^16.2.0",
+    "react-placeholder": "^2.0.0",
+    "react-rating": "^1.0.4",
+    "rxjs": "^5.5.6"
+  }
+}

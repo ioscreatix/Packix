@@ -1,0 +1,189 @@
+<style>
+  .page-main .list-group {
+    margin: 0;
+    padding-right: 15px;
+  }
+
+  .list-group .avatar {
+    width: 62px;
+  }
+
+  .list-group .card {
+    margin-bottom: 15px;
+  }
+
+  .list-group .card-block {
+    -webkit-transition: border .2s linear, color .2s linear, width .2s linear, background-color .2s linear;
+    -o-transition: border .2s linear, color .2s linear, width .2s linear, background-color .2s linear;
+    transition: border .2s linear, color .2s linear, width .2s linear, background-color .2s linear;
+  }
+
+  .list-group .card-block:hover {
+    cursor: pointer;
+    background-color: #eee;
+  }
+
+  .list-group .list-group-item, .list-group .list-group-item:hover {
+    background-color: transparent;
+  }
+
+  .list-inline {
+    height: 25px;
+  }
+
+  .list-inline li a:hover {
+    text-decoration: none;
+    color: #76838f !important;
+  }
+
+  .detail {
+    background-color: #a2caee !important;
+  }
+
+
+</style>
+
+<!--<div class="page-aside" remarkPageAside>-->
+  <!--<div class="page-aside-switch">-->
+    <!--<i class="icon wb-chevron-left" aria-hidden="true"></i>-->
+    <!--<i class="icon wb-chevron-right" aria-hidden="true"></i>-->
+  <!--</div>-->
+  <!--<div class="page-aside-scroll" style="max-height: 100%; height:100%">-->
+    <!--<div data-role="container">-->
+      <!--<div data-role="content">-->
+        <!--<div class="page-aside-inner">-->
+          <!--<div class="page-aside-section">-->
+            <!--<div class="list-group">-->
+              <!--<a class="list-group-item list-group-item-action active" href="javascript:void(0)">-->
+                <!--<span class="badge badge-pill badge-danger">6</span>-->
+                <!--<i class="icon wb-inbox" aria-hidden="true"></i> Inbox-->
+              <!--</a>-->
+            <!--</div>-->
+          <!--</div>-->
+          <!--<div class="page-aside-section">-->
+            <!--<h5 class="page-aside-title">FILTER</h5>-->
+            <!--<div class="list-group">-->
+              <!--<div class="list-group-item">-->
+                <!--<div class="list-content">-->
+                  <!--<i class="item-right wb-medium-point red-600" aria-hidden="true"></i>-->
+                  <!--<span class="list-text">Alpha</span>-->
+                <!--</div>-->
+              <!--</div>-->
+              <!--<div class="list-group-item">-->
+                <!--<div class="list-content">-->
+                  <!--<i class="item-right wb-medium-point orange-600" aria-hidden="true"></i>-->
+                  <!--<span class="list-text">Beta</span>-->
+                <!--</div>-->
+              <!--</div>-->
+              <!--<div class="list-group-item">-->
+                <!--<div class="list-content">-->
+                  <!--<i class="item-right wb-medium-point green-600" aria-hidden="true"></i>-->
+                  <!--<span class="list-text">Stable</span>-->
+                <!--</div>-->
+              <!--</div>-->
+            <!--</div>-->
+          <!--</div>-->
+        <!--</div>-->
+      <!--</div>-->
+    <!--</div>-->
+  <!--</div>-->
+<!--</div>-->
+<div class="page-main">
+  <div ng2FileDrop [uploader]=packageUploader style="height:100%; overflow-y: auto;" class="p-15">
+    <div class="row">
+      <div class="list-group-item col-lg-4 col-md-6 col-sm-12 col-xs-12 friend-info" *ngFor="let item of packageUploader.queue">
+        <div class="card card-shadow w-full">
+          <div class="card-block text-center bg-white p-20">
+            <a href="#" class="mb-5">
+              <i class="icon fa fa-archive" style="margin:0px; !important; font-size:4em;"></i>
+            </a>
+            <div class="friend-name" *ngIf="item.packageData">
+              {{ item.packageData.name }}
+            </div>
+            <div class="friend-title mb-20 blue-grey-400" *ngIf="item.packageData">
+              Hi~ I&#x27;m Adam.
+            </div>
+            <div class="progress progress-lg" style="margin-bottom:0px;">
+              <div class="progress-bar progress-bar-success" [style.width.%]="item.uploader.progress"
+                   role="progressbar">
+                {{item.uploader.progress}}%
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12" *ngFor="let package of packages">
+        <a [routerLink]="package.id">
+          <div class="panel">
+            <div class="panel-heading">
+              <h3 class="panel-title" *ngIf="package.name">{{ package.name }}
+                <span class="badge badge-primary">New</span>
+              </h3>
+            </div>
+            <div class="panel-body">
+              <p *ngIf="package.shortDescription">{{package.shortDescription}}</p>
+            </div>
+          </div>
+        </a>
+        <!--<div class="card card-shadow w-full">-->
+        <!--<div class="card-block text-center bg-white p-20">-->
+        <!--<a href="#" class="mb-5">-->
+        <!--<i class="icon fa fa-archive" style="margin:0px; !important; font-size:4em;"></i>-->
+        <!--</a>-->
+        <!--<div class="friend-name" *ngIf="package.name">-->
+        <!--{{ package.name }}-->
+        <!--</div>-->
+        <!--<div class="friend-title mb-20 blue-grey-400" *ngIf="package.name">-->
+        <!--{{ package.name }}-->
+        <!--</div>-->
+        <!--</div>-->
+        <!--</div>-->
+      </div>
+    </div>
+    <!--<div class="list-group row">-->
+    <!--<div class="col-md-3 list-group-item friend-info" *ngFor="let package of packages">-->
+    <!--<div class="widget widget-shadow">-->
+    <!--<div class="widget-content text-center bg-white padding-20">-->
+    <!--<a href="#" class="margin-bottom-5 margin-top-5">-->
+    <!--<i class="icon fa fa-archive" style="margin:0px; !important; font-size:4em;"></i>-->
+    <!--</a>-->
+    <!--<div class="friend-name" *ngIf="package.name">-->
+    <!--{{ package.name }}-->
+    <!--</div>-->
+    <!--<div class="friend-title margin-bottom-20 blue-grey-400" *ngIf="item.packageData">-->
+    <!--{{ item.packageData.name }}-->
+    <!--</div>-->
+    <!--<div class="progress">-->
+    <!--<div class="progress-bar progress-bar-danger" [style.width.%]="item.uploader.progress" role="progressbar">-->
+    <!--{{item.uploader.progress}}%-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--</div>-->
+
+    <!--<div class="col-md-3 list-group-item friend-info" *ngFor="let package of packages">-->
+    <!--<div class="widget widget-shadow">-->
+    <!--<div class="widget-content text-center bg-white padding-20">-->
+    <!--<a href="#" class="margin-bottom-5 margin-top-5">-->
+    <!--<i class="icon fa fa-archive" style="margin:0px; !important; font-size:4em;"></i>-->
+    <!--</a>-->
+    <!--<div class="friend-name" *ngIf="package.name">-->
+    <!--{{ package.name }}-->
+    <!--</div>-->
+    <!--<div class="friend-title margin-bottom-20 blue-grey-400" *ngIf="package.name">-->
+    <!--{{ package.name }}-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--</div>-->
+  </div>
+
+  <div class="site-action" data-plugin="actionBtn">
+    <input #packageUploadButton type="file" name="upload" ng2FileSelect [uploader]="packageUploader">
+    <button type="button" class="site-action-toggle btn-raised btn btn-success btn-floating" (click)="packageUploadButton.click()">
+      <i class="front-icon wb-upload animation-scale-up" aria-hidden="true"></i>
+    </button>
+  </div>
+</div>
